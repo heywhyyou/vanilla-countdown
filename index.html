@@ -1,13 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Vanilla Countdown</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="container">
+      <div class="container-wrapper">
+        <p>Введите дату</p>
+        <div class="form">
+          <input type="datetime-local" placeholder="DD.MM.YYYY" />
+          <button class="count">Посчитать</button>
+        </div>
+
+        <p>Осталось времени:</p>
+      </div>
+    </div>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>
