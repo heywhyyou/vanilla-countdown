@@ -1,24 +1,26 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import {
+  differenceInDays,
+  differenceInHours,
+  differenceInMinutes,
+  differenceInYears,
+} from "date-fns";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const input = document.querySelector(".input");
+const button = document.querySelector(".count");
+const containerWrapper = document.querySelector(".container-wrapper");
 
-setupCounter(document.querySelector('#counter'))
+const buttonClickHandler = () => {
+  const targetDate = input.value;
+  const currentDate = Date.now();
+  const diffInYears = differenceInYears(targetDate, currentDate);
+  const diffInDays = differenceInDays(targetDate, currentDate);
+  console.log(diffInDays);
+  const diffInHours = differenceInHours(targetDate, currentDate);
+  const diffInMinutes = differenceInMinutes(targetDate, currentDate);
+  const html = `<p>${diffInYears} лет ${diffInDays - diffInYears * 365} дней ${
+    diffInHours - diffInDays * 24
+  } часов ${diffInMinutes - diffInHours * 60} минут`;
+  containerWrapper.insertAdjacentHTML("beforeend", html);
+};
+
+button.addEventListener("click", buttonClickHandler);
